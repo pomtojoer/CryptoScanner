@@ -38,4 +38,22 @@ def index():
             'config_desc': 'this is a test config sadfhahsdfhasdhfsdhfh',
         }
     ]
-    return render_template('index.html', title='Home', apis=apis, scanners=scanners)
+    return render_template('index.html', apis=apis, scanners=scanners)
+
+
+@app.route('/add_scanner')
+def add_scanner():
+
+    return render_template('add_scanner.html')
+
+
+@app.route('/add_api')
+def add_api():
+
+    return render_template('add_api.html')
+
+
+@app.route('/scanner/<int:scanner_serial>')
+def open_scan(scanner_serial):
+
+    return render_template('scanner.html', scanner_serial=scanner_serial)
