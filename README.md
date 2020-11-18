@@ -2,25 +2,25 @@
 
 
 ## Table of Contents
----
+
 
 ## About The Project
----
 Have you ever wanted to run a real time scanner for your crypto trading but can't / don't want to pay for TradingView's pro subscription? CryptoScanner is the poor-man's version of that, but free.
 
 ## Getting Started
----
+
 ### Prerequisites
+
 ### Installation
 
 ## Usage
----
+
 
 ## Todo
----
+
 
 ## Contributing
----
+
 
 ## Disclaimer
 The information provided by CrytoScanner is for general information only. It should not be taken as constituting professional advice from the project contributors (CryptoScanner contributors).

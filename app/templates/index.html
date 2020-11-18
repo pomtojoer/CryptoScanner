@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <section class="jumbotron text-center">
+        <div class="container">
+        <h1>CryptoScanner</h1>
+        <p class="lead text-muted">A real-time cryptocurrency scanner for the real cheapskates</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="row">
+            <div>
+                <h1>Available Exchanges</h1>
+                <p class="lead text-muted">Table of API added and the associated keys</p>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <thead>
+                        <tr>
+                        <th>#</th>
+                        <th>Exchange</th>
+                        <th>API Key</th>
+                        <th>API Secret</th>
+                        <th>Date Added</th>
+                        <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for api in apis %}
+                        <tr>
+                            <td>{{ api.serial }}</td>
+                            <td>{{ api.exchange }}</td>
+                            <td>{{ api.public_key }}</td>
+                            <td>{{ api.secret_key }}</td>
+                            <td>{{ api.date_added }}</td>
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-secondary">Edit</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="row" style="padding-top: 10px;">
+            <div class="w-100">
+                <h1>Scanners</h1>
+                <p class="lead text-muted">Table of all configured scanners</p>
+                <div class="w-100" style="padding-bottom: 20px;">
+                    <p class="lead d-inline" style="color: red; padding-right: 10px;">
+                        ⬤ Stopped
+                    </p>
+                    <p class="lead d-inline" style="color: orange; padding-right: 10px;">
+                        ⬤ Initialising
+                    </p>
+                    <p class="lead d-inline" style="color: green; padding-right: 10px;">
+                        ⬤ Running
+                    </p>
+                    <button type="button" class="btn btn-primary float-right">Add Scan</button>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped table-sm">
+                        <thead>
+                            <tr>
+                            <th>#</th>
+                            <th>Status</th>
+                            <th>Name</th>
+                            <th>Exchange</th>
+                            <th>Interval</th>
+                            <th>Config Desc</th>
+                            <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for scanner in scanners %}
+                            <tr>
+                                <td>{{ scanner.serial }}</td>
+                                <td>{{ scanner.status }}</td>
+                                <td><a href="/scanner/{{ scanner.serial }}" target="_blank">{{ scanner.name }}</a></td>
+                                <td>{{ scanner.exchange }}</td>
+                                <td>{{ scanner.interval }}</td>
+                                <td>{{ scanner.config_desc }}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-success">Start</button>
+                                        <button type="button" class="btn btn-sm btn-danger">Stop</button>
+                                        <button type="button" class="btn btn-sm btn-secondary">Edit</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+{% endblock %}

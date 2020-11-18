@@ -15,7 +15,7 @@ class MainGui(tk.Frame):
         # self.create_widgets()
 
     def create_intro_frame(self):
-        self.top_frame = tk.Frame(self)
+        self.top_frame = tk.Frame(self.master)
         self.top_frame.pack(side=tk.TOP,fill=tk.X)
 
         # Main label at the top
@@ -27,7 +27,7 @@ class MainGui(tk.Frame):
         self.main_label.pack(side=tk.TOP)
 
     def create_explanation_frame(self):
-        self.explanation_frame = tk.Frame(self)
+        self.explanation_frame = tk.Frame(self.master)
         self.explanation_frame.pack(fill=tk.X)
 
                 # Scanner status explanation label
@@ -40,7 +40,7 @@ class MainGui(tk.Frame):
         tk.Button(self.explanation_frame, text='Add Scan', command=self.add_scan).grid(row=1, column=5)
 
     def create_table_frame(self):
-        self.middle_frame = tk.Frame(self)
+        self.middle_frame = tk.Frame(self.master)
         self.middle_frame.pack(fill=tk.X)
 
         # Creating table headers
@@ -90,7 +90,7 @@ class MainGui(tk.Frame):
             tk.Button(self.middle_frame, text='remove', command=self.remove_scan).grid(row=4+row, column=len(self.scan_table_data.columns)+3)
 
     def create_bottom_frame(self):
-        self.bottom_frame = tk.Frame(self)
+        self.bottom_frame = tk.Frame(self.master)
         self.bottom_frame.pack(side=tk.BOTTOM,fill=tk.X)
 
         # Disclaimer label
@@ -107,6 +107,8 @@ class MainGui(tk.Frame):
 
     # command functions
     def add_scan(self):
+        window = tk.Toplevel(self.master)
+        AddScanGui(master=window)
         print("hi there, everyone!")
 
     def initialise_scans_table(self):
@@ -129,6 +131,45 @@ class MainGui(tk.Frame):
     def remove_scan(self):
         print('str')
 
+
+class AddScanGui(tk.Frame):
+    def __init__(self, master=None):
+        super().__init__(master)
+        self.master = master
+        self.create_intro_frame()
+    
+    def create_intro_frame(self):
+        self.top_frame = tk.Frame(self.master)
+        self.top_frame.pack(side=tk.TOP,fill=tk.X)
+
+        # Main label at the top
+        self.main_label = tk.Label(self.top_frame)
+        self.main_label.config(dict(
+            text='Add Scan',
+            font=("Courier", 30),
+        ))
+        self.main_label.pack(side=tk.TOP)
+
+
+class ScannerGui(tk.Frame):
+    def __init__(self, master=None):
+        super().__init__(master)
+        self.master = master
+        self.create_intro_frame()
+
+    def create_intro_frame(self):
+        self.top_frame = tk.Frame(self.master)
+        self.top_frame.pack(side=tk.TOP,fill=tk.X)
+
+        # Main label at the top
+        self.main_label = tk.Label(self.top_frame)
+        self.main_label.config(dict(
+            text='Add Scan',
+            font=("Courier", 30),
+        ))
+        self.main_label.pack(side=tk.TOP)
+
+        
 root = tk.Tk()
 root.title("CryptoScanner")
 root.geometry("850x400")

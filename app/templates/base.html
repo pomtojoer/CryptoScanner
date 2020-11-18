@@ -1,0 +1,49 @@
+<html>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="Sean Chai">
+      
+      <title>CryptoScanner</title>
+
+      <!-- Bootstrap core CSS -->
+      <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+
+      <style>
+        .bd-placeholder-img {
+          font-size: 1.125rem;
+          text-anchor: middle;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+  
+        @media (min-width: 768px) {
+          .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+          }
+        }
+      </style>
+
+      <!-- Custom styles for from bootstrap dashboard template -->
+      <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+    </head>
+
+    <body>
+      <main role="main">
+        {% block content %}{% endblock %}
+      </div>
+    </body>
+
+    <footer class="text-muted" style="padding-top: 50px;">
+      <div class="container">
+        <p class="float-right">
+          <a href="#">Back to top</a>
+        </p>
+        <p>For more about this project, visit our <a href="https://github.com/pomtojoer/CryptoScanner">GitHub</a>.</p>
+      </div>
+    </footer>
+</html>
