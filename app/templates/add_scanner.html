@@ -2,5 +2,161 @@
 
 {% block content %}
 
+  <div class="container">
+    <div class="row text-center" style="padding-top: 20px; padding-bottom: 50px;">
+      <h1 class="w-100">Add Scanner</h1>
+    </div>
 
+    <form>
+      <div class="row form-group">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="row">
+            <label for="inputName" class="col-sm-2">Name</label>
+            <input type="text" class="form-control col-sm-10" id="inputName" aria-describedby="nameHelp" placeholder="Enter scanner name" required>
+          </div>
+          <small id="nameHelp" class="form-text text-muted">Nickname for your scanner. Choose something meaningful for future reference.</small>
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+          <div class="row">
+            <label for="inputExchange" class="col-sm-2 col-lg-3 col-xl-2">Exchange</label>
+            <select class="form-control col-sm-10 col-lg-9 col-xl-10" id="inputExchange" aria-describedby="exchangeHelp" required>
+              <option value="" selected disabled>Please select an exchange</option>
+              {% for exchange in exchanges %}
+              <option>{{ exchange }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <small id="exchangeHelp" class="form-text text-muted">Exchange you want to run the scanner on.</small>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+          <div class="row">
+            <label for="inputInterval" class="col-sm-2 col-lg-3 col-xl-2">Interval</label>
+            <select class="form-control col-sm-10 col-lg-9 col-xl-10 interval-select" id="inputInterval" aria-describedby="intervalHelp" required>
+              <option value="" selected disabled>Please select an interval</option>
+              <optgroup label="Seconds">
+                <option value="">5 seconds</option>
+                <option value="">10 seconds</option>
+                <option value="">30 seconds</option>
+              </optgroup>
+              <optgroup label="Minutes">
+                <option value="">1 minute</option>
+                <option value="">3 minutes</option>
+                <option value="">5 minutes</option>
+                <option value="">15 minutes</option>
+                <option value="">30 minutes</option>
+                <option value="">45 minutes</option>
+              </optgroup>
+              <optgroup label="Hours">
+                <option value="">1 hour</option>
+                <option value="">2 hours</option>
+                <option value="">3 hours</option>
+                <option value="">4 hours</option>
+              </optgroup>
+              <optgroup label="Days">
+                <option value="">1 day</option>
+                <option value="">1 week</option>
+                <option value="">1 month</option>
+              </optgroup>
+            </select>
+          </div>
+          <small id="intervalHelp" class="form-text text-muted">Time interval to do technical analysis on</small>
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+          <label for="inputPreFilterTable">Initial Prefilters</label>
+          <div>
+            <table id="inputPreFilterTable" class="table order-list">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Quantity</th>
+                  <th>Condition</th>
+                  <th>Value</th>
+                  <th class="lookback-header">Lookback</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="col-sm-4">
+                    <input type="text" name="name" class="form-control" />
+                  </td>
+                  <td class="col-sm-4">
+                    <input type="mail" name="mail"  class="form-control"/>
+                  </td>
+                  <td class="col-sm-4">
+                    <input type="text" name="phone"  class="form-control"/>
+                  </td>
+                  <td class="col-sm-3">
+                    <input type="text" name="phone"  class="form-control"/>
+                  </td>
+                  <td class="col-sm-2">
+                    <a class="deleteRow"></a>
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="5" style="text-align: left;">
+                      <input type="button" class="btn btn-lg btn-block " id="addrow" value="Add Row" />
+                  </td>
+                </tr>
+                <tr>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row form-group">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="row">
+            <div class="col-sm-2">
+              <label for="inputDescription">Description</label>
+              <small id="descriptionHelp" class="form-text text-muted">Short description of what the scanner does.</small>
+            </div>
+            <textarea type="text" class="form-control col-sm-10" id="inputDescription" aria-describedby="descriptionHelp" placeholder="Enter scanner description" required></textarea>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row form-group">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+          <div class="row">
+            <label for="inputExchange" class="col-sm-2 col-lg-3 col-xl-2">Exchange</label>
+            <select class="form-control col-sm-10 col-lg-9 col-xl-10" id="inputExchange" aria-describedby="exchangeHelp" required>
+              <option value="" selected disabled>Please select an exchange</option>
+              {% for exchange in exchanges %}
+              <option>{{ exchange }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <small id="exchangeHelp" class="form-text text-muted">Nickname for your scanner. Choose something meaningful for future reference</small>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+          <div class="row">
+            <label for="inputName" class="col-sm-2">Interval</label>
+            <input type="text" class="form-control col-sm-10" id="inputName" aria-describedby="nameHelp" placeholder="Enter scanner name" required>
+          </div>
+          <small id="nameHelp" class="form-text text-muted">Nickname for your scanner. Choose something meaningful for future reference</small>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    
+    <script src="{{ url_for('static', filename='scripts/jquery-3.5.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/add_scanner.js') }}"></script>
+    <script>
+      $("select.interval-select").on("change", function() {
+        $("th.lookback-header").text("Lookback (" + $("select.interval-select option:selected").text() + ")");
+      });
+    </script>
+  </div>
 {% endblock %}

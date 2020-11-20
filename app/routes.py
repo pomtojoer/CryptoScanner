@@ -43,8 +43,8 @@ def index():
 
 @app.route('/add_scanner')
 def add_scanner():
-
-    return render_template('add_scanner.html')
+    exchanges = ['binance', 'gemini']
+    return render_template('add_scanner.html', exchanges=exchanges)
 
 
 @app.route('/add_api')

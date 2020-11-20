@@ -10,16 +10,42 @@ Have you ever wanted to run a real time scanner for your crypto trading but can'
 ## Getting Started
 
 ### Prerequisites
+#### MariaDB
+
+MariaDB is required for this project. To run your own MariaDB, please refer to the installation steps which are relevant to your system [here](https://mariadb.com/kb/en/binary-packages/).
+
+A mac installation example is included below.
+
+To install MariaDB via homebrew, use the following command:
+
+```
+brew install mariadb
+```
+
+To start the server and check its status:
+
+```
+mysql.server start --user="$(whoami)"
+mysql.server status --user="$(whoami)"
+```
+
+To stop the server:
+
+```
+mysql.server stop --user="$(whoami)"
+```
 
 ### Installation
 
-## Usage
 
+
+## Usage
 
 ## Todo
 
-
-## Contributing
+- Alert specific filters
+- Window specific filters
+- Exchange API connection
 
 
 ## Disclaimer
