@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var counter = 0;
+    var counter = 1;
 
     $("#addrow").on("click", function () {
         var newRow = $("<tr>");

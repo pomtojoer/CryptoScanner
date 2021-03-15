@@ -7,12 +7,12 @@
       <h1 class="w-100">Add Scanner</h1>
     </div>
 
-    <form>
+    <form method="POST">
       <div class="row form-group">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
           <div class="row">
             <label for="inputName" class="col-sm-2">Name</label>
-            <input type="text" class="form-control col-sm-10" id="inputName" aria-describedby="nameHelp" placeholder="Enter scanner name" required>
+            <input type="text" class="form-control col-sm-10" id="inputName" name="inputName" aria-describedby="nameHelp" placeholder="Enter scanner name" required>
           </div>
           <small id="nameHelp" class="form-text text-muted">Nickname for your scanner. Choose something meaningful for future reference.</small>
         </div>
@@ -22,7 +22,7 @@
         <div class="col-12 col-sm-12 col-md-12 col-lg-6">
           <div class="row">
             <label for="inputExchange" class="col-sm-2 col-lg-3 col-xl-2">Exchange</label>
-            <select class="form-control col-sm-10 col-lg-9 col-xl-10" id="inputExchange" aria-describedby="exchangeHelp" required>
+            <select class="form-control col-sm-10 col-lg-9 col-xl-10" id="inputExchange" name="inputExchange" aria-describedby="exchangeHelp" required>
               <option value="" selected disabled>Please select an exchange</option>
               {% for exchange in exchanges %}
               <option>{{ exchange }}</option>
@@ -34,31 +34,31 @@
         <div class="col-12 col-sm-12 col-md-12 col-lg-6">
           <div class="row">
             <label for="inputInterval" class="col-sm-2 col-lg-3 col-xl-2">Interval</label>
-            <select class="form-control col-sm-10 col-lg-9 col-xl-10 interval-select" id="inputInterval" aria-describedby="intervalHelp" required>
+            <select class="form-control col-sm-10 col-lg-9 col-xl-10 interval-select" id="inputInterval" name="inputInterval" aria-describedby="intervalHelp" required>
               <option value="" selected disabled>Please select an interval</option>
               <optgroup label="Seconds">
-                <option value="">5 seconds</option>
-                <option value="">10 seconds</option>
-                <option value="">30 seconds</option>
+                <option value="5s">5 seconds</option>
+                <option value="10s">10 seconds</option>
+                <option value="30s">30 seconds</option>
               </optgroup>
               <optgroup label="Minutes">
-                <option value="">1 minute</option>
-                <option value="">3 minutes</option>
-                <option value="">5 minutes</option>
-                <option value="">15 minutes</option>
-                <option value="">30 minutes</option>
-                <option value="">45 minutes</option>
+                <option value="1min">1 minute</option>
+                <option value="3min">3 minutes</option>
+                <option value="5min">5 minutes</option>
+                <option value="15min">15 minutes</option>
+                <option value="30min">30 minutes</option>
+                <option value="45min">45 minutes</option>
               </optgroup>
               <optgroup label="Hours">
-                <option value="">1 hour</option>
-                <option value="">2 hours</option>
-                <option value="">3 hours</option>
-                <option value="">4 hours</option>
+                <option value="1h">1 hour</option>
+                <option value="2h">2 hours</option>
+                <option value="3h">3 hours</option>
+                <option value="4h">4 hours</option>
               </optgroup>
               <optgroup label="Days">
-                <option value="">1 day</option>
-                <option value="">1 week</option>
-                <option value="">1 month</option>
+                <option value="1d">1 day</option>
+                <option value="1w">1 week</option>
+                <option value="1m">1 month</option>
               </optgroup>
             </select>
           </div>
@@ -83,16 +83,16 @@
               <tbody>
                 <tr>
                   <td class="col-sm-4">
-                    <input type="text" name="name" class="form-control" />
+                    <input type="text" name="quantity0" class="form-control" />
                   </td>
                   <td class="col-sm-4">
-                    <input type="mail" name="mail"  class="form-control"/>
+                    <input type="mail" name="condition0"  class="form-control"/>
                   </td>
                   <td class="col-sm-4">
-                    <input type="text" name="phone"  class="form-control"/>
+                    <input type="text" name="value0" class="form-control"/>
                   </td>
                   <td class="col-sm-3">
-                    <input type="text" name="phone"  class="form-control"/>
+                    <input type="text" name="lookback0"  class="form-control"/>
                   </td>
                   <td class="col-sm-2">
                     <a class="deleteRow"></a>
@@ -102,7 +102,7 @@
               <tfoot>
                 <tr>
                   <td colspan="5" style="text-align: left;">
-                      <input type="button" class="btn btn-lg btn-block " id="addrow" value="Add Row" />
+                      <input type="button" class="btn btn-lg btn-block" id="addrow" value="Add Row" style="background-color: lightgreen;"/>
                   </td>
                 </tr>
                 <tr>
@@ -120,17 +120,17 @@
               <label for="inputDescription">Description</label>
               <small id="descriptionHelp" class="form-text text-muted">Short description of what the scanner does.</small>
             </div>
-            <textarea type="text" class="form-control col-sm-10" id="inputDescription" aria-describedby="descriptionHelp" placeholder="Enter scanner description" required></textarea>
+            <textarea type="text" class="form-control col-sm-10" id="inputDescription" name="inputDescription" aria-describedby="descriptionHelp" placeholder="Enter scanner description" required></textarea>
           </div>
         </div>
       </div>
 
 
-      <div class="row form-group">
+      <!-- <div class="row form-group">
         <div class="col-12 col-sm-12 col-md-12 col-lg-6">
           <div class="row">
             <label for="inputExchange" class="col-sm-2 col-lg-3 col-xl-2">Exchange</label>
-            <select class="form-control col-sm-10 col-lg-9 col-xl-10" id="inputExchange" aria-describedby="exchangeHelp" required>
+            <select class="form-control col-sm-10 col-lg-9 col-xl-10" id="inputExchange" name="inputExchange" aria-describedby="exchangeHelp" required>
               <option value="" selected disabled>Please select an exchange</option>
               {% for exchange in exchanges %}
               <option>{{ exchange }}</option>
@@ -141,22 +141,64 @@
         </div>
         <div class="col-12 col-sm-12 col-md-12 col-lg-6">
           <div class="row">
-            <label for="inputName" class="col-sm-2">Interval</label>
+            <label for="inputInterval" class="col-sm-2">Interval</label>
             <input type="text" class="form-control col-sm-10" id="inputName" aria-describedby="nameHelp" placeholder="Enter scanner name" required>
           </div>
           <small id="nameHelp" class="form-text text-muted">Nickname for your scanner. Choose something meaningful for future reference</small>
         </div>
-      </div>
+      </div> -->
 
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     
     <script src="{{ url_for('static', filename='scripts/jquery-3.5.1.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='scripts/add_scanner.js') }}"></script>
-    <script>
+    <!-- <script src="{{ url_for('static', filename='scripts/add_scanner.js') }}"></script> -->
+    <script type="text/javascript">
       $("select.interval-select").on("change", function() {
         $("th.lookback-header").text("Lookback (" + $("select.interval-select option:selected").text() + ")");
       });
+    </script>
+
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var counter = 1;
+
+      $("#addrow").on("click", function () {
+          var newRow = $("<tr>");
+          var cols = "";
+
+          cols += '<td><input type="text" class="form-control" name="name' + counter + '" required/></td>';
+          cols += '<td><input type="text" class="form-control" name="mail' + counter + '" required/></td>';
+          cols += '<td><input type="text" class="form-control" name="phone' + counter + '" required/></td>';
+          cols += '<td><input type="text" class="form-control" name="df' + counter + '" required/></td>';
+
+          cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="X"></td>';
+          newRow.append(cols);
+          $("table.order-list").append(newRow);
+          counter++;
+      });
+
+      $("table.order-list").on("click", ".ibtnDel", function (event) {
+          $(this).closest("tr").remove();       
+          counter -= 1
+      });
+
+      $("interval-select").on("change", function() {
+          alert("changed");
+      });
+    });
+
+    function calculateRow(row) {
+      var price = +row.find('input[name^="price"]').val();
+    }
+
+    function calculateGrandTotal() {
+      var grandTotal = 0;
+      $("table.order-list").find('input[name^="price"]').each(function () {
+          grandTotal += +$(this).val();
+      });
+      $("#grandtotal").text(grandTotal.toFixed(2));
+    }
     </script>
   </div>
 {% endblock %}
