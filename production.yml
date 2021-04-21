@@ -14,6 +14,16 @@ services:
     env_file: .env
     command: /usr/local/bin/gunicorn web.wsgi:application -w 2 -b :8000
 
+  server:
+    restart: always
+    build: ./server
+    links:
+      - postgres:postgres
+    # volumes:
+    #   - ./web/:/usr/src/app/
+    env_file: .env
+    command: python server.py
+
   nginx:
     restart: always
     build: ./nginx/
