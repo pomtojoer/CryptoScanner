@@ -1,6 +1,7 @@
-{% extends "base.html" %}
+{% extends "webta/base.html" %}
 
 {% block content %}
+  {% load static %}
 
   <div class="container">
     <div class="row text-center" style="padding-top: 20px; padding-bottom: 50px;">
@@ -151,8 +152,10 @@
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     
-    <script src="{{ url_for('static', filename='scripts/jquery-3.5.1.min.js') }}"></script>
-    <!-- <script src="{{ url_for('static', filename='scripts/add_scanner.js') }}"></script> -->
+    <link rel="stylesheet" type= "text/css" href="{% static 'webta/scripts/jquery-3.5.1.min.js' %}">
+    {% comment %} <link rel="stylesheet" type= "text/css" href="{% static 'webta/scripts/add_scanner.js' %}"> {% endcomment %}
+    {% comment %} <script src="{{ url_for('static', filename='scripts/jquery-3.5.1.min.js') }}"></script> {% endcomment %}
+    {% comment %} <!-- <script src="{{ url_for('static', filename='scripts/add_scanner.js') }}"></script> --> {% endcomment %}
     <script type="text/javascript">
       $("select.interval-select").on("change", function() {
         $("th.lookback-header").text("Lookback (" + $("select.interval-select option:selected").text() + ")");

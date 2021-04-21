@@ -1,13 +1,10 @@
-# Flask modules
-from flask import render_template, request
-from app import app
+from django.shortcuts import render
+from django.http import HttpResponse
 
-# Python modules
-import pandas as pd
+# import pandas as pd
 
-@app.route('/')
-@app.route('/index')
-def index():
+# Create your views here.
+def index(request):
     apis = [
         {
             'serial': 1,
@@ -36,17 +33,16 @@ def index():
         {
             'serial': 2,
             'status': 'stopped',
-            'name': 'scanner 2',
+            'name': 'scanner s',
             'exchange': 'gemini',
             'interval': '15 min',
             'config_desc': 'this is a test config sadfhahsdfhasdhfsdhfh',
         }
     ]
-    return render_template('index.html', apis=apis, scanners=scanners)
+    return render(request, 'webta/index.html', {'apis':apis, 'scanners':scanners})
 
 
-@app.route('/add_scanner', methods=['POST', 'GET'])
-def add_scanner():
+def add_scanner(request):
     if request.method == 'POST':
         form_data = request.form
         scanner_name = form_data['inputName']
@@ -58,27 +54,25 @@ def add_scanner():
         prefilter_value = {k[-1]:v for k,v in form_data.items() if 'value' in k}
         prefilter_lookback = {k[-1]:v for k,v in form_data.items() if 'lookback' in k}
 
-        prefilter_datatable = pd.DataFrame(columns=[''])
-        prefilters_data = {prefilter_data[k[-1]][k[:-1]]:1 for k,v in form_data.items() if k[-1].isdigit()}
+        # prefilter_datatable = pd.DataFrame(columns=[''])
+        # prefilters_data = {prefilter_data[k[-1]][k[:-1]]:1 for k,v in form_data.items() if k[-1].isdigit()}
         # prefilters_data = {k[-1]:{k[:-1]:v} for k,v in form_data.items() if k[-1].isdigit()}
 
         print(form_data)
         print(scanner_name)
-        print(prefilters_data)
+        # print(prefilters_data)
     else:
         exchanges = ['binance', 'gemini']
-        return render_template('add_scanner.html', exchanges=exchanges)
+        return render(request, 'webta/add_scanner.html', {'exchanges':exchanges}) 
 
 
-@app.route('/add_api', methods=['POST', 'GET'])
-def add_api():
+def add_api(request):
     if request.method == 'POST':
         print(request.form)
     else:
-        return render_template('add_api.html')
+        return render(request, 'webta/add_api.html')
 
 
-@app.route('/scanner/<int:scanner_serial>')
-def open_scan(scanner_serial):
+def open_scan(request, scanner_serial):
 
-    return render_template('scanner.html', scanner_serial=scanner_serial)
+    return render(request, 'webta/scanner.html', {'scanner_serial':scanner_serial})
