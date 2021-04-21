@@ -11,11 +11,9 @@ Have you ever wanted to run a real time scanner for your crypto trading but can'
 
 ### Prerequisites
 
-#### PostgreSQL
+#### Docker
 
-PostgreSQL is required for this project. To run your own PostgreSQL, please refer to the installation steps which are relevant to your system [here](https://www.enterprisedb.com/edb-docs/p/postgresql).
-
-To install PostgreSQL please download from the above link. Once downloaded, 
+Docker and docker-machine is requried for this project. Please follow installation steps relevant to your system [here](https://docs.docker.com/get-docker/). Docker-machine is also needed for this deployment. This can be installed via [this tutorial](https://docs.docker.com/machine/install-machine/).
 
 ### Installation
 
